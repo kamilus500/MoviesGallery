@@ -1,0 +1,35 @@
+﻿@model Movies_Gallery.ViewModel.MovieResultsViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Movies_Gallery.Models.Dtos
+@{
+    ViewData["Title"] = Model.Movie.Title;
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-title text-center" style="font-size:40px">@Model.Movie.Title</div>
+        <div class="card-body">
+            <div class="text-center">
+
+                <p>Release Date: @Model.Movie.ReleaseYear.ToShortDateString()</p>
+                <p>Duration: @Model.Movie.Duration</p>
+                <p>Director: @Model.Movie.Director</p>
+
+                <a class="btn btn-primary" asp-controller="Comment" asp-action="Create">Create Comment</a>
+
+                @*Not working*@     
+                @*<partial name="~/Views/Shared/_CommentBox.cshtml" model="new CommentDto { MovieId = Model.Movie.Id, ReleaseCreate = DateTime.Now, UserId= Model.User.Id,  }" />*@
+
+                <hr />
+
+                @foreach (var comment in Model.Comments)
+                {
+                    <p class="text-left">@comment.User.Login</p><br />
+                    <p class="text-left">@comment.CommentText <span style="font-size:13px">@comment.ReleaseCreate.ToShortDateString()</span></p>
+
+                    <hr />
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p style="font-size:20px">On this website you can view a lot of movies, rating and comment them</p>
+    <p id="textP">Kliknij mnie</p>
+
+    <p style="display:none" id="info">You was clicked on paragraph</p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+
+<script>
+    $("#textP").click(function () {
+        $("#info").fadeIn("slow");
+    });
+</script>

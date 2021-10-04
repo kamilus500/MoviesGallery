@@ -1,0 +1,18 @@
+2021-10-04 21:12:10.0957 INFO Application started. Press Ctrl+C to shut down.
+2021-10-04 21:12:10.0957 INFO Hosting environment: Development
+2021-10-04 21:12:10.0957 INFO Content root path: C:\Users\LanowY\Desktop\c# projects\Movie_Gallery_MVC\Movies_Gallery\Movies_Gallery
+2021-10-04 21:12:10.1566 INFO Home/Index
+2021-10-04 21:12:11.4994 INFO Movie/Index
+2021-10-04 21:12:13.0312 INFO Single Movie with id: 1
+2021-10-04 21:12:47.5602 INFO Movie/Index
+2021-10-04 21:12:49.2001 INFO Single Movie with id: 3
+2021-10-04 21:12:51.0325 INFO Comment/Create GET
+2021-10-04 21:13:26.6398 INFO Application started. Press Ctrl+C to shut down.
+2021-10-04 21:13:26.6398 INFO Hosting environment: Development
+2021-10-04 21:13:26.6398 INFO Content root path: C:\Users\LanowY\Desktop\c# projects\Movie_Gallery_MVC\Movies_Gallery\Movies_Gallery
+2021-10-04 21:13:26.7073 INFO Home/Index
+2021-10-04 21:13:28.2040 INFO Movie/Index
+2021-10-04 21:13:29.6729 INFO Home/Index
+2021-10-04 21:13:30.2903 INFO Movie/Index
+2021-10-04 21:13:31.8360 INFO Single Movie with id: 3
+2021-10-04 21:13:33.2682 INFO Comment/Create GET

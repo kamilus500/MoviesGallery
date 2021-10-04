@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Movies_Gallery.Entities.Movie>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Movies_Gallery.Helpers
+@{
+    ViewData["Title"] = "Movies";
+}
+@if (Model.Any())
+{
+
+    <div class="container">
+        <a class="btn btn-primary" style="margin-left:10%;" asp-controller="Movie" asp-action="Create">Create new movie</a>
+        @foreach (var movie in Model)
+        {
+            <div class="card" style="width: 80%; margin:5px auto">
+                <div class="card-body">
+                    <div style="float:left;width: 25%">
+                        <img style="position:relative; right: 10px" src="@GenerateImagePath.CreateImagePath(movie.Title.ToLower())" width="120" height="220" />
+                    </div>
+                    <div>
+                        <a class="card-title text-left" asp-controller="Movie" asp-action="SingleMovie" asp-route-id="@movie.Id" style="text-decoration:none">@movie.Title</a><br />
+                        <span style="font-size: 13px" class="text-left">Duration: @movie.Duration</span><br />
+                        <span style="font-size: 13px" class="text-right">Director: @movie.Director</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p class="text-center">Database has no movies</p>
+}
+
