@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Movies_Gallery.Data;
 using Movies_Gallery.Entities;
 using Movies_Gallery.Models.Dtos;
 using Movies_Gallery.ViewModel;
@@ -27,7 +28,6 @@ namespace Movies_Gallery.Controllers
 
         public IActionResult Index()
         {
-
             var movies = _dbContext.Movies.ToList();
 
             return View(movies);
@@ -37,14 +37,14 @@ namespace Movies_Gallery.Controllers
         {
 
             var movie = _dbContext.Movies.Include(x=>x.Comments).FirstOrDefault(x => x.Id == id);
-            var comments = _dbContext.Comments.Include(x=>x.User).Where(x => x.MovieId == id).ToList();
-            var user = _dbContext.Users.FirstOrDefault(x => x.Id == 2);
+            var comments = _dbContext.Comments.Where(x => x.MovieId == id).OrderByDescending(x => x.ReleaseCreate).ToList();
+            var users = _dbContext.Users.ToList();
 
             MovieResultsViewModel movieResult = new MovieResultsViewModel()
             {
                 Movie = movie,
                 Comments = comments,
-                User = user
+                Users = users
             };
 
             return View(movieResult);

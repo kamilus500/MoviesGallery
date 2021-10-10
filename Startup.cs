@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Movies_Gallery.Data;
 using Movies_Gallery.Entities;
 using System;
 using System.Collections.Generic;
@@ -27,6 +29,10 @@ namespace Movies_Gallery
             services.AddControllersWithViews();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<MoviesDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("moviesConString")));
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<MoviesDbContext>();
+            services.AddRazorPages();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -44,6 +50,7 @@ namespace Movies_Gallery
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -51,6 +58,7 @@ namespace Movies_Gallery
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,16 +21,11 @@ namespace Movies_Gallery.Controllers
             _dbContext = dbContext;
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Comment comment)
         {
-
             if (ModelState.IsValid)
             {
                 _dbContext.Comments.Add(comment);
@@ -38,14 +34,14 @@ namespace Movies_Gallery.Controllers
                 MovieResultsViewModel movieResult = new MovieResultsViewModel()
                 {
                     Movie = _dbContext.Movies.Include(x => x.Comments).FirstOrDefault(x => x.Id == comment.MovieId),
-                    Comments = _dbContext.Comments.Include(x => x.User).Where(x => x.MovieId == comment.MovieId).ToList(),
-                    User = _dbContext.Users.FirstOrDefault(x => x.Id == 2)
+                    Comments = _dbContext.Comments.Where(x => x.MovieId == comment.MovieId).OrderByDescending(x=>x.ReleaseCreate).ToList(),
+                    Users = _dbContext.Users.ToList()
                 };
 
                 return View("~/Views/Movie/SingleMovie.cshtml", movieResult);
             }
 
-            return View(comment);
+            return View("~/Views/Shared/_CommentBox.cshtml",comment);
         }
     }
 }

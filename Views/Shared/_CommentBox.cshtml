@@ -1,16 +1,27 @@
 ﻿@model Movies_Gallery.Entities.Comment
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Create";
+    var movieId = ViewData["MovieId"];
+    var user = await UserManager.GetUserAsync(User);
+}
 
 <form asp-controller="Comment" asp-action="Create" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="CommentText" class="control-label"></label>
-        <input asp-for="CommentText" class="form-control" />
+        <input id="commentText" asp-for="CommentText" class="form-control" />
         <span asp-validation-for="CommentText" class="text-danger"></span>
     </div>
 
+    <input asp-for="UserId" type="hidden" value="@user.Id" />
+    <input asp-for="MovieId" type="hidden" value="@movieId" />
+    <input asp-for="ReleaseCreate" type="hidden" value="@DateTime.Now" />
+
     <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
+        <input id="btnComment" type="submit" value="Create" class="btn btn-primary" />
     </div>
 </form>

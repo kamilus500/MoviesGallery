@@ -14,10 +14,7 @@ namespace Movies_Gallery.Entities
         [Display(Name = "Result")]
         [Required(ErrorMessage = "Please type grade of movie")]
         public double Result { get; set; }
-
-        public int UserId { get; set; }
-        public virtual User User { get; set; }
-
+        public string UserId { get; set; }
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
     }

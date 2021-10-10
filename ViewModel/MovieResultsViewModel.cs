@@ -1,4 +1,5 @@
-﻿using Movies_Gallery.Entities;
+﻿using Microsoft.AspNetCore.Identity;
+using Movies_Gallery.Entities;
 using Movies_Gallery.Models.Dtos;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,6 @@ namespace Movies_Gallery.ViewModel
     {
         public Movie Movie { get; set; }
         public List<Comment> Comments { get; set; }
-        public User User { get; set; }
+        public List<IdentityUser> Users { get; set; }
     }
 }
