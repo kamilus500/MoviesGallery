@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Movies_Gallery.Entities;
-using Movies_Gallery.Models.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
