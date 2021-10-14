@@ -34,8 +34,7 @@ namespace Movies_Gallery.Controllers
                 MovieResultsViewModel movieResult = new MovieResultsViewModel()
                 {
                     Movie = _dbContext.Movies.Include(x => x.Comments).FirstOrDefault(x => x.Id == comment.MovieId),
-                    Comments = _dbContext.Comments.Where(x => x.MovieId == comment.MovieId).OrderByDescending(x=>x.ReleaseCreate).ToList(),
-                    Users = _dbContext.Users.ToList()
+                    Comments = _dbContext.Comments.Where(x => x.MovieId == comment.MovieId).Include(x=>x.User).OrderByDescending(x => x.ReleaseCreate).ToList()
                 };
 
                 return View("~/Views/Movie/SingleMovie.cshtml", movieResult);

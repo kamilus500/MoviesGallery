@@ -4,8 +4,8 @@
 @using Microsoft.AspNetCore.Identity
 @using Movies_Gallery.Entities
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 @{
     ViewData["Title"] = Model.Movie.Title;
@@ -36,7 +36,7 @@
                 {
                     @foreach (var comment in Model.Comments)
                     {
-                        <p class="text-left">@Model.Users.FirstOrDefault(x => x.Id == comment.UserId).UserName</p>
+                        <p class="text-left">@comment.User.UserName</p>
                         <p class="text-left">@comment.CommentText <span style="font-size:13px">@comment.ReleaseCreate.ToShortDateString()</span></p>
 
                         <hr />

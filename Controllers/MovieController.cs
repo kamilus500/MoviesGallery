@@ -37,14 +37,12 @@ namespace Movies_Gallery.Controllers
         {
 
             var movie = _dbContext.Movies.Include(x=>x.Comments).FirstOrDefault(x => x.Id == id);
-            var comments = _dbContext.Comments.Where(x => x.MovieId == id).OrderByDescending(x => x.ReleaseCreate).ToList();
-            var users = _dbContext.Users.ToList();
+            var comments = _dbContext.Comments.Where(x => x.MovieId == id).Include(x=>x.User).OrderByDescending(x => x.ReleaseCreate).ToList();
 
             MovieResultsViewModel movieResult = new MovieResultsViewModel()
             {
                 Movie = movie,
-                Comments = comments,
-                Users = users
+                Comments = comments
             };
 
             return View(movieResult);

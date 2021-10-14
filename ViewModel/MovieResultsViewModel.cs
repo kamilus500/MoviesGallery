@@ -11,6 +11,5 @@ namespace Movies_Gallery.ViewModel
     {
         public Movie Movie { get; set; }
         public List<Comment> Comments { get; set; }
-        public List<IdentityUser> Users { get; set; }
     }
 }
