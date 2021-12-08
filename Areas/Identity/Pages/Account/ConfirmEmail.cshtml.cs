@@ -15,9 +15,9 @@ namespace Movies_Gallery.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<User> userManager)
+        public ConfirmEmailModel(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
         }

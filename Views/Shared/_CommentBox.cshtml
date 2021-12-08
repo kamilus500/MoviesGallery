@@ -1,8 +1,8 @@
 ﻿@model Movies_Gallery.Entities.Comment
 @using Movies_Gallery.Entities
 
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
@@ -27,3 +27,7 @@
         <input id="btnComment" type="submit" value="Create" class="btn btn-primary" />
     </div>
 </form>
+
+<script type="text/javascript">
+    document.querySelector('#commentText').value = "";
+</script>

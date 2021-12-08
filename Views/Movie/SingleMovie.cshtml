@@ -4,8 +4,8 @@
 @using Microsoft.AspNetCore.Identity
 @using Movies_Gallery.Entities
 
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = Model.Movie.Title;

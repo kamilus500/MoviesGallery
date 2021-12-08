@@ -175,3 +175,5 @@ C:\Users\LanowY\Desktop\c# projects\Movie_Gallery_MVC\Movies_Gallery\Movies_Gall
 C:\Users\LanowY\Desktop\c# projects\Movie_Gallery_MVC\Movies_Gallery\Movies_Gallery\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ResendEmailConfirmation.cshtml.g.cs
 C:\Users\LanowY\Desktop\c# projects\Movie_Gallery_MVC\Movies_Gallery\Movies_Gallery\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
 C:\Users\LanowY\Desktop\c# projects\Movie_Gallery_MVC\Movies_Gallery\Movies_Gallery\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
+C:\Users\LanowY\Desktop\c# projects\Movie_Gallery_MVC\Movies_Gallery\Movies_Gallery\bin\Debug\net5.0\SendGrid.dll
+C:\Users\LanowY\Desktop\c# projects\Movie_Gallery_MVC\Movies_Gallery\Movies_Gallery\bin\Debug\net5.0\StarkbankEcdsa.dll

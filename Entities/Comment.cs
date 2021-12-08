@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,6 +14,6 @@ namespace Movies_Gallery.Entities
         public string UserId { get; set; }
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
-        public virtual User User { get; set; }
+        public virtual IdentityUser User { get; set; }
     }
 }

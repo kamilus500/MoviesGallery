@@ -1,8 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>8ce251cc-9de6-4913-b303-825ae2a51178</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Comment\**" />
+    <Content Remove="Views\Comment\**" />
+    <EmbeddedResource Remove="Views\Comment\**" />
+    <None Remove="Views\Comment\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="C:\Users\LanowY\.nuget\packages\nlog.config\4.7.11\contentFiles\any\any\NLog.config" />
@@ -20,11 +28,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="SendGrid" Version="9.24.4" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\Comment\" />
   </ItemGroup>
 
 </Project>

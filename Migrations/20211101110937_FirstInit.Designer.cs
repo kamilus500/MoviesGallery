@@ -10,7 +10,7 @@ using Movies_Gallery.Entities;
 namespace Movies_Gallery.Migrations
 {
     [DbContext(typeof(MoviesDbContext))]
-    [Migration("20211014142131_FirstInit")]
+    [Migration("20211101110937_FirstInit")]
     partial class FirstInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,10 +84,6 @@ namespace Movies_Gallery.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -139,8 +135,6 @@ namespace Movies_Gallery.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -244,11 +238,13 @@ namespace Movies_Gallery.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MovieId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -300,16 +296,6 @@ namespace Movies_Gallery.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("Movies_Gallery.Entities.User", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("Login")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -371,7 +357,13 @@ namespace Movies_Gallery.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Movie");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Movies_Gallery.Entities.Mark", b =>

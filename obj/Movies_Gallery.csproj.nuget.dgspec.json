@@ -76,6 +76,10 @@
               "target": "Package",
               "version": "[5.0.2, )"
             },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.24.4, )"
+            },
             "jQuery": {
               "target": "Package",
               "version": "[3.6.0, )"
@@ -99,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

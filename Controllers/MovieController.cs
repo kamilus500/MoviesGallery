@@ -1,17 +1,12 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Movies_Gallery.Data;
 using Movies_Gallery.Entities;
 using Movies_Gallery.Models.Dtos;
 using Movies_Gallery.ViewModel;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Movies_Gallery.Controllers
 {
@@ -35,7 +30,6 @@ namespace Movies_Gallery.Controllers
 
         public IActionResult SingleMovie(int id)
         {
-
             var movie = _dbContext.Movies.Include(x=>x.Comments).FirstOrDefault(x => x.Id == id);
             var comments = _dbContext.Comments.Where(x => x.MovieId == id).Include(x=>x.User).OrderByDescending(x => x.ReleaseCreate).ToList();
 
@@ -48,12 +42,14 @@ namespace Movies_Gallery.Controllers
             return View(movieResult);
         }
 
+        [Authorize]
         public IActionResult Create()
         {
 
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(MovieDto movieDto)
