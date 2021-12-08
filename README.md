@@ -2,7 +2,7 @@
 Is a my first simple project by used:
 - ASP.NET CORE MVC 
 - ENTITY FRAMEWORK CORE
-- IDENTITY
+- IDENTITY (Authentication and Authorization)
 - BOOTSTRAP 5
 - JQUERY (very simple)
 
